@@ -1,0 +1,24 @@
+{
+    "host": "",
+    "user": "builder",
+    "osver": "",
+    "specdir": "/home/builder/SPECS/",
+    "sourcedir": "/home/builder/SOURCES/",
+    "rpmdir": "/home/builder/RPMS/",
+    "repo_user": "root",
+    "repo_host": "repo.example.com",
+    "repo_base_dir": "/var/ftp/pub/",
+    "repo_name_prefix": "example-",
+    "git_host": "git.example.com",
+    "git_user": "git",
+
+    "centos5": {
+        "host": "172.18.100.208",
+        "osver": "centos5"
+    },
+
+    "centos6": {
+        "host": "172.18.100.214",
+        "osver": "centos6"
+    }
+}

@@ -1,0 +1,46 @@
+%define installprefix /usr/local
+%define packagename {{ packagename }}
+
+Summary: eXtra Tiny Skeleton
+URL: https://xts.rek.me
+Name: %{packagename}
+Version: {{ version }}
+Group: Applications/Publishing
+Release: {{ release }}.{{ minor }}
+License: MPL
+Source0: {{ source }}
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
+BuildArch: {{ arch }}
+Prefix: %{installprefix}
+
+%description
+example Xmas
+
+%pre
+# Add the "www" user
+getent group www >/dev/null || groupadd -r www
+getent passwd www >/dev/null || \
+    useradd -r -g www -s /sbin/nologin \
+    -c "www user"  www
+exit 0
+
+%prep
+%setup -q -c
+
+%build
+find . -depth -name .git -type d -exec rm -rf {} \;
+find . -depth -name .gitignore -type f -exec rm -rf {} \;
+
+%install
+rm -rf ${RPM_BUILD_ROOT}
+mkdir -p ${RPM_BUILD_ROOT}%{installprefix}/{{ name }}
+cp -pr * ${RPM_BUILD_ROOT}%{installprefix}/{{ name }}/{{ version }}
+
+%clean
+rm -rf ${RPM_BUILD_ROOT}
+
+%files
+%defattr(-,www,www)
+%dir %attr(-,www,www)%{installprefix}/{{ name }}
+%{installprefix}/{{ name }}
+%exclude %{installprefix}/{{ name }}/{{ version }}/tests

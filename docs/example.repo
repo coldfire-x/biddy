@@ -1,0 +1,13 @@
+[example-x86_64]
+name=x86_64
+baseurl=ftp://repo.example.com/pub/centos$releasever/x86_64/
+gpgcheck=0
+enabled=1
+metadata_expire=0
+
+[example-noarch]
+name=noarch
+baseurl=ftp://repo.example.com/pub/centos$releasever/noarch/
+gpgcheck=0
+enabled=1
+metadata_expire=0
